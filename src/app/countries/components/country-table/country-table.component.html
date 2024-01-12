@@ -1,0 +1,56 @@
+
+
+<div  *ngIf="countriesHijo.length==0; else showMetable"
+    class="alert alert-warning text-center">
+    No hay paises que mostrar
+</div>
+
+
+<ng-template #showMetable>
+
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Icono</th>
+                <th>Bandera</th>
+                <th>Nombre</th>
+                <th>Capital</th>
+                <th class="text-right">Población</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let country of countriesHijo; let i= index">
+                <td>{{i+1}}</td>
+                <td>{{country.flag}}</td>
+                <td>
+                    <img [src]="country.flags.svg" [alt]="country.name.common">
+                </td>
+                <td>{{country.name.common}}</td>
+                <td>{{country.capital}}</td>
+                <td  class="text-right">{{country.population | number}}</td>
+                <td>
+                    <a href="#">V</a>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+
+    <div>Tengo tantos paises:{{countriesHijo.length}}</div>
+
+    <ul>
+        <li *ngFor="let country of countriesHijo">
+        {{country.name.common}} - {{country.population | number}}
+        </li>
+    </ul>
+
+            Tabla de resultados
+            {{countriesHijo}}
+            <hr>
+            {{countriesHijo | json}}
+            <hr>
+        <pre> {{countriesHijo |json}}</pre>
+
+</ng-template>
